@@ -1,0 +1,9 @@
+# Ignorera node_modules (om du använder npm senare)
+node_modules/
+
+# Ignorera operativsystemspecifika filer
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Ignorera IDE-specifika filer (som Visual Studio Code)
+.vscode/
