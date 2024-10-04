@@ -23,13 +23,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const player = document.querySelector(`.player[data-number="${playerNumber}"]`);
         
         // Flytta spelaren till den nya positionen
+        const xPos = event.clientX - field.offsetLeft - 20;  // Anpassning för att centrera spelaren
+        const yPos = event.clientY - field.offsetTop - 20;
+        
         player.style.position = 'absolute';
-        player.style.left = (event.clientX - 20) + 'px';
-        player.style.top = (event.clientY - 20) + 'px';
+        player.style.left = `${xPos}px`;
+        player.style.top = `${yPos}px`;
 
         // Lägg till spelaren på planen om den inte redan är där
         if (!field.contains(player)) {
             field.appendChild(player);
+        }
+
+        // Uppdatera spelarens position på sidan
+        updatePlayerPosition(playerNumber, xPos, yPos);
+    }
+
+    function updatePlayerPosition(playerNumber, xPos, yPos) {
+        const positionElement = document.getElementById(`player${playerNumber}-position`);
+        if (positionElement) {
+            positionElement.textContent = `X: ${xPos}, Y: ${yPos}`;
         }
     }
 });
